@@ -1,13 +1,12 @@
 import React, { useRef, useState } from "react";
 import "./index.css";
-import CoverPic from "../../../assest/image/cover-pic.png";
-import CompanyLogo from "../../../assest/icon/logo.png";
-import VisiblePasswordIcon from "../../../assest/icon/visible-password-icon.png";
+import { AppIcons, AppImages } from "../../../constant/image";
 import Input from "../../widgets/input";
 import {
   emailValidationHandler,
   passwordValidationHandler,
 } from "../../../helper-function/index";
+import { InputText, ValidationError } from "../../../constant/text";
 const LoginScreen = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const userEmailRef = useRef(null);
@@ -20,13 +19,13 @@ const LoginScreen = () => {
     const isValidEmail = emailValidationHandler(userEmail);
 
     if (!isValidEmail) {
-      alert("Invalid email address");
+      alert(ValidationError.emailValidationError);
       return;
     }
     const isValidPassword = passwordValidationHandler(password);
     console.log(isValidPassword);
     if (!isValidPassword) {
-      alert("Password should be at least 6 characters long");
+      alert(ValidationError.passWordValidationError);
       return;
     }
     userEmailRef.current.value = "";
@@ -36,12 +35,12 @@ const LoginScreen = () => {
   return (
     <div className="login-screen">
       <div className="left-side">
-        <img src={CoverPic} alt="Wallpaper" />
+        <img src={AppImages.CoverPic} alt="Wallpaper" />
       </div>
       <div className="right-side">
         <div className="logoSection">
           <div className="logoStyle">
-            <img className="logo" src={CompanyLogo} alt="Company Logo" />
+            <img className="logo" src={AppIcons.Logo} alt="Company Logo" />
           </div>
           <div>
             <span className="welcome-text logo-slogan-1">Welcome</span>
@@ -59,7 +58,7 @@ const LoginScreen = () => {
             }}
             type={"text"}
             ref={userEmailRef}
-            placeholder={"Enter your email"}
+            placeholder={InputText.email}
           />
           <Input
             inputStyle={{
@@ -68,8 +67,8 @@ const LoginScreen = () => {
             type={passwordVisible ? "text" : "password"}
             ref={passwordRef}
             iconStyle={{ width: "25px" }}
-            placeholder={"Enter your email password"}
-            rightIcon={VisiblePasswordIcon}
+            placeholder={InputText.password}
+            rightIcon={AppIcons.VisiblePasswordIcon}
             iconHandler={() => setPasswordVisible(!passwordVisible)}
           />
           <div style={{ width: "55%", alignSelf: "end" }}>
