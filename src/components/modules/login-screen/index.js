@@ -4,19 +4,32 @@ import CoverPic from "../../../assest/image/cover-pic.png";
 import CompanyLogo from "../../../assest/icon/logo.png";
 import VisiblePasswordIcon from "../../../assest/icon/visible-password-icon.png";
 import Input from "../../widgets/input";
+import {
+  emailValidationHandler,
+  passwordValidationHandler,
+} from "../../../helper-function/index";
 const LoginScreen = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const usernameRef = useRef(null);
+  const userEmailRef = useRef(null);
   const passwordRef = useRef(null);
 
   const handleLogin = () => {
-    const username = usernameRef.current.value;
+    const userEmail = userEmailRef.current.value;
     const password = passwordRef.current.value;
 
-    // Do something with the username and password, such as authentication
+    const isValidEmail = emailValidationHandler(userEmail);
 
-    // Clear the input fields
-    usernameRef.current.value = "";
+    if (!isValidEmail) {
+      alert("Invalid email address");
+      return;
+    }
+    const isValidPassword = passwordValidationHandler(password);
+    console.log(isValidPassword);
+    if (!isValidPassword) {
+      alert("Password should be at least 6 characters long");
+      return;
+    }
+    userEmailRef.current.value = "";
     passwordRef.current.value = "";
   };
 
@@ -41,7 +54,7 @@ const LoginScreen = () => {
               width: "63%",
             }}
             type={"text"}
-            ref={usernameRef}
+            ref={userEmailRef}
             placeholder={"Enter your email"}
           />
           <Input
