@@ -39,14 +39,18 @@ const LoginScreen = () => {
         <img src={CoverPic} alt="Wallpaper" />
       </div>
       <div className="right-side">
-        <div className="logoStyle">
-          <img className="logo" src={CompanyLogo} alt="Company Logo" />
+        <div className="logoSection">
+          <div className="logoStyle">
+            <img className="logo" src={CompanyLogo} alt="Company Logo" />
+          </div>
+          <div>
+            <span className="welcome-text logo-slogan-1">Welcome</span>
+            <span className="teal-color-text logo-slogan-1"> Back!</span>
+          </div>
+          <span className="logo-slogan-2 steel-blue-text">
+            Glad to see you, Again!
+          </span>
         </div>
-        <div>
-          <span className="welcome-text logo-slogan-1">Welcome</span>
-          <span className="back-text logo-slogan-1"> Back!</span>
-        </div>
-        <span className="logo-slogan-2">Glad to see you, Again!</span>
 
         <div className="login-content">
           <Input
@@ -68,10 +72,23 @@ const LoginScreen = () => {
             rightIcon={VisiblePasswordIcon}
             iconHandler={() => setPasswordVisible(!passwordVisible)}
           />
-
+          <div style={{ width: "55%", alignSelf: "end" }}>
+            <span className="signUp-section-long-text steel-blue-text">
+              Forgot Password?
+            </span>
+          </div>
           <div className="button" onClick={handleLogin}>
             <text className="button-text">Log In</text>
           </div>
+        </div>
+        <div>
+          <span className="signUp-section-long-text steel-blue-text">
+            Don’t an account yet?
+          </span>
+          <span className="signUp-section-long-text teal-color-text">
+            {" "}
+            Sign Up
+          </span>
         </div>
       </div>
     </div>
