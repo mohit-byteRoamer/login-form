@@ -5,6 +5,7 @@ const Input = ({
   type,
   ref,
   placeholder,
+  iconStyle,
   rightIcon,
   iconHandler,
 }) => {
@@ -18,7 +19,7 @@ const Input = ({
         rightIcon={rightIcon}
       />
       {rightIcon && (
-        <span style={Styles.iconBox} onClick={iconHandler}>
+        <span style={{ ...Styles.iconBox, ...iconStyle }} onClick={iconHandler}>
           <img style={Styles.icon} src={rightIcon} />
         </span>
       )}

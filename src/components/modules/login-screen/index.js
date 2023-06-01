@@ -50,6 +50,7 @@ const LoginScreen = () => {
             }}
             type={passwordVisible ? "text" : "password"}
             ref={passwordRef}
+            iconStyle={{ width: "25px" }}
             placeholder={"Enter your email password"}
             rightIcon={VisiblePasswordIcon}
             iconHandler={() => setPasswordVisible(!passwordVisible)}
